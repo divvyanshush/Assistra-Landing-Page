@@ -22,9 +22,12 @@
       align-items: center;
       justify-content: space-between;
       background: #F0FFF9;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
+      transition: transform 0.3s ease;
     }
 
     .nav-logo img {
@@ -477,6 +480,23 @@
       </div>
     </div>
   </section>
+
+
+  <script>
+    let lastScroll = 0;
+    const nav = document.querySelector("nav");
+    window.addEventListener("scroll", () => {
+      const current = window.scrollY;
+      if (current <= 0) {
+        nav.style.transform = "translateY(0)";
+      } else if (current > lastScroll) {
+        nav.style.transform = "translateY(-100%)";
+      } else {
+        nav.style.transform = "translateY(0)";
+      }
+      lastScroll = current;
+    });
+  </script>
 
 </body>
 </html>
