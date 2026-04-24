@@ -1,3 +1,170 @@
-html = open("index.html", "w")
-html.write(open("/dev/stdin").read())
-html.close()
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assistra</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Geist', sans-serif;
+      background: #ffffff;
+      color: #141413;
+    }
+
+    nav {
+      width: 100%;
+      padding: 20px 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #F0FFF9;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-logo img {
+      height: 36px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      font-family: 'Geist', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #141413;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #007683; }
+
+    .nav-links .chevron svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ffffff;
+      border: 1px solid rgba(0,118,131,0.15);
+      border-radius: 12px;
+      padding: 8px 0;
+      min-width: 160px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      z-index: 999;
+    }
+
+    .nav-links li:hover .dropdown-menu { display: block; }
+    .nav-links li:hover .chevron svg { transform: rotate(180deg); }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      font-family: 'Geist', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: #141413;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu a:hover {
+      background: #F0FFF9;
+      color: #007683;
+    }
+
+    .btn-filled {
+      background: #007683;
+      color: #ffffff;
+      font-family: 'Geist', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-filled:hover { opacity: 0.88; transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <img src="/Public/assistra.png" alt="Assistra" />
+    </div>
+
+    <ul class="nav-links">
+      <li>
+        <a>Product <span class="chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span></a>
+        <div class="dropdown-menu">
+          <a href="#">Overview</a>
+          <a href="#">Features</a>
+          <a href="#">Integrations</a>
+        </div>
+      </li>
+      <li>
+        <a>Solutions <span class="chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span></a>
+        <div class="dropdown-menu">
+          <a href="#">For Startups</a>
+          <a href="#">For Enterprise</a>
+          <a href="#">For Teams</a>
+        </div>
+      </li>
+      <li>
+        <a>Resources <span class="chevron"><svg viewBox="0 0 12 12"><polyline points="2,4 6,8 10,4"/></svg></span></a>
+        <div class="dropdown-menu">
+          <a href="#">Blog</a>
+          <a href="#">Docs</a>
+          <a href="#">Community</a>
+        </div>
+      </li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+
+    <a href="#" class="btn-filled">Try For Free →</a>
+  </nav>
+
+</body>
+</html>"""
+
+with open("index.html", "w") as f:
+    f.write(html)
+
+print("✅ Navbar fixed!")
